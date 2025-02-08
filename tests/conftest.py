@@ -5,7 +5,7 @@ from playwright.sync_api import Playwright, expect
 
 @pytest.fixture
 def main_page(playwright):
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch()
     context = browser.new_context(locale='en-US')
     page = context.new_page()
     page.goto("https://first.institute/edu/")
@@ -16,7 +16,7 @@ def main_page(playwright):
 
 @pytest.fixture
 def hello_task_page(playwright):
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch()
     context = browser.new_context(locale='en-US')
     page = context.new_page()
     output = page.locator("#output")
