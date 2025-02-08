@@ -5,7 +5,7 @@ from tests.test_data import TESTED_FUNCTION, FUNCTION_CALL
 
 
 def test_courses(playwright: Playwright):
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch()
     context = browser.new_context()
     page = context.new_page()
     page.goto("https://first.institute/edu/")
