@@ -120,12 +120,11 @@ jobs:
       #     path: _site
 
       - run: allure generate -c allure-results -o _site
-      # - name: Store generated report
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: _site
-      #     path: _site
-      #     retention-days: 1
+      - name: Store generated report
+        uses: actions/upload-artifact@v4
+        with:
+          name: _site
+          path: _site
   # publish-report:
   #   if: always()
   #   runs-on: ubuntu-latest
@@ -141,7 +140,7 @@ jobs:
   
       - name: Upload Pages artifact
         # uses: actions/upload-artifact@v4
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v1
         if: always()
         with:
           name: _site
