@@ -52,12 +52,9 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       if: always()
       with:
-        github_token: c
+        github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_branch: gh-pages
         publish_dir: allure-history
-        run: |
-          curl -H "Authorization: token $GITHUB_TOKEN" \
-            https://api.github.com/rate_limit
       # env:
       #   PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       #   PUBLISH_BRANCH: gh-pages
