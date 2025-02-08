@@ -39,5 +39,5 @@ def make_page_fixture(hello_task_page) -> object:
             return hello_task_page
         else:
             raise ValueError(f"Unknown page: {page_name}")
-    return make, 0
+    return make
 
