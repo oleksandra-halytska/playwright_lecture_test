@@ -23,13 +23,31 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Install Playwright browsers
       run: playwright install
+
     - name: Run Pytest tests
       run: |
         pytest --alluredir=allure-results
+
+    - name: Load test report history
+      if: always()
+      uses: actions/checkout@v4
+      continue-on-error: true
+      with:
+        ref: gh-pages
+        path: gh-pages
+
     - name: Build test report
       if: always()
       uses: simple-elf/allure-report-action@v1.7
       with:
         gh_pages: allure-report
-        allure_results: allure-results
+        allure_results: build/allure-results
         allure_history: allure-history
+
+    - name: Publish test report
+      uses: peaceiris/actions-gh-pages@v3
+      if: always()
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: gh-pages
+        publish_dir: allure-history
