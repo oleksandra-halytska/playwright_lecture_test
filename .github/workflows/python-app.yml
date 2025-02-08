@@ -113,11 +113,11 @@ jobs:
           java-version: '17'
       - run: sudo wget https://github.com/allure-framework/allure2/releases/download/2.23.1/allure-2.23.1.tgz && sudo tar -zxvf allure-2.23.1.tgz -C /opt/ && sudo ln -s /opt/allure-2.23.1/bin/allure /usr/bin/allure
   
-      - name: Download all workflow run artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: _site
-          path: _site
+      # - name: Download all workflow run artifacts
+      #   uses: actions/download-artifact@v4
+      #   with:
+      #     name: _site
+      #     path: _site
 
       - run: allure generate -c allure-results -o _site
       # - name: Store generated report
@@ -126,12 +126,12 @@ jobs:
       #     name: _site
       #     path: _site
       #     retention-days: 1
-  publish-report:
-    if: always()
-    runs-on: ubuntu-latest
-    needs: generate-report
-    name: Report publication
-    steps:
+  # publish-report:
+  #   if: always()
+  #   runs-on: ubuntu-latest
+  #   needs: generate-report
+  #   name: Report publication
+  #   steps:
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v4
         if: always()
