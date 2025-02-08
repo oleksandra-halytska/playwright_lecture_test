@@ -30,7 +30,7 @@ jobs:
 
     - name: Run Pytest tests
       run: |
-        pytest --alluredir=allure-results
+        pytest --alluredir=build/allure-results
 
     - name: Load test report history
       if: always()
