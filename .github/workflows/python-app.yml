@@ -49,5 +49,5 @@ jobs:
         allure_history: allure-history
 
     - name: Publish test report
-      uses: actions/upload-pages-artifact@v4
+      uses: actions/upload-pages-artifact@v3
       if: always()
