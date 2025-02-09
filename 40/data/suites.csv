@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Sun Feb 09 18:04:39 GMT 2025","Sun Feb 09 18:04:41 GMT 2025","1708","tests","test_courses","","","","test_courses",""
+"passed","Sun Feb 09 18:04:44 GMT 2025","Sun Feb 09 18:04:44 GMT 2025","71","tests","test_courses","","","","test_output_verification",""
+"failed","Sun Feb 09 18:04:47 GMT 2025","Sun Feb 09 18:04:52 GMT 2025","5048","tests","test_courses","","","","test_custom_code_verification",""
