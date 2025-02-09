@@ -5,6 +5,8 @@ from pathlib import Path
 import pytest
 from playwright.sync_api import Playwright, expect
 from slugify import slugify
+import allure
+from allure_commons.types import AttachmentType
 
 
 @pytest.fixture
@@ -43,3 +45,20 @@ def make_page_fixture(hello_task_page) -> object:
         else:
             raise ValueError(f"Unknown page: {page_name}")
     return make
+
+
+@pytest.hookimpl(hookwrapper=True, tryfirst=True)
+def pytest_runtest_makereport(item):
+    outcome = yield
+    result = outcome.get_result()
+
+    if result.failed:
+        page = item.funcargs.get("page", None)
+        if page:
+            screenshot_bytes = page.screenshot()
+
+            allure.attach(
+                screenshot_bytes,
+                name="DashboardScreen",
+                attachment_type=AttachmentType.PNG
+            )
