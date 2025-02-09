@@ -4,15 +4,10 @@ from tests.pages.course_card import all_cards
 from tests.test_data import TESTED_FUNCTION, FUNCTION_CALL
 
 
-def test_courses(playwright: Playwright):
-    browser = playwright.chromium.launch()
-    context = browser.new_context()
-    page = context.new_page()
+def test_courses(page):
     page.goto("https://first.institute/edu/")
-
     cards = all_cards(page)
     card, *_ = cards
-
     assert len(cards) == 1, "Очікується рівно 1 картка"
     assert card.title == "Знайомство з Python", "Заголовок картки некоректний"
 
