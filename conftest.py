@@ -59,6 +59,5 @@ def pytest_runtest_makereport(item):
 
             allure.attach(
                 screenshot_bytes,
-                name="DashboardScreen",
                 attachment_type=AttachmentType.PNG
             )
