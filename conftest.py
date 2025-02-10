@@ -1,10 +1,7 @@
-import os
 import re
-from pathlib import Path
 
 import pytest
-from playwright.sync_api import Playwright, expect
-from slugify import slugify
+from playwright.sync_api import expect
 import allure
 from allure_commons.types import AttachmentType
 
@@ -22,9 +19,6 @@ def main_page(playwright):
 
 @pytest.fixture
 def hello_task_page(page):
-    # browser = playwright.chromium.launch()
-    # context = browser.new_context(locale='en-US')
-    # page = context.new_page()
     output = page.locator("#output")
     editor_content = page.get_by_role("textbox", name="Editor content")
     page.goto("https://first.institute/edu/course/basic_python/task/hello_stranger/")
